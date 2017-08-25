@@ -27,7 +27,7 @@ templates:
     - set_offset(${const})
 
 cpp_templates:
-    imports: '#include <gnuradio/analog/sig_source_${type.fcn}.h>'
+    includes: '#include <gnuradio/analog/sig_source_${type.fcn}.h>'
     make: analog::sig_source_${type.fcn}::make(0, analog::GR_CONST_WAVE, 0, 0, ${const})
     callbacks:
     - set_offset(${const})
