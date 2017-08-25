@@ -44,7 +44,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/blocks/throttle.h>'
-    make: blocks::throttle::make(${type.size})*${vlen}, ${samples_per_second}, ${ignoretag})
+    make: blocks::throttle::make(${type.size})*${vlen}, ${samples_per_second}, ${ignoretag});
     callbacks:
     - set_sample_rate(${samples_per_second})
     translations:

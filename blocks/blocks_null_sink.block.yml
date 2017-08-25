@@ -39,7 +39,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/blocks/null_sink.h>'
-    make: blocks::null_sink::make(${type.size})*${vlen})
+    make: blocks::null_sink::make(${type.size})*${vlen});
     translations:
         gr.sizeof_: 'sizeof('
 
