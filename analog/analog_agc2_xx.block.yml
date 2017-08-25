@@ -62,5 +62,6 @@ cpp_templates:
     - set_reference(${reference})
     - set_gain(${gain})
     - set_max_gain(${max_gain})
+    link: analog
 
 file_format: 1
