@@ -33,6 +33,6 @@ templates:
 cpp_templates:
     includes: '#include <gnuradio/analog/random_uniform_source_${type.fcn}.h>'
     make: analog.random_uniform_source_${type.fcn}(${minimum}, ${maximum}, ${seed})
-    link: analog
+    link: gnuradio-analog
 
 file_format: 1

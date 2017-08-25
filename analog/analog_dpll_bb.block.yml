@@ -29,6 +29,6 @@ cpp_templates:
     make: analog::dpll_bb::make(${period}, ${gain})
     callbacks:
     - set_gain(${gain})
-    link: analog
+    link: gnuradio-analog
 
 file_format: 1

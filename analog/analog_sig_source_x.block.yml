@@ -65,7 +65,7 @@ cpp_templates:
     - set_frequency(${freq})
     - set_amplitude(${amp})
     - set_offset(${offset})
-    link: analog
+    link: gnuradio-analog
     translations:
         analog.: 'analog::'
 
