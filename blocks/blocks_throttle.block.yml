@@ -49,8 +49,8 @@ cpp_templates:
     - set_sample_rate(${samples_per_second})
     translations:
         gr.sizeof_: 'sizeof('
-        True: true
-        False: false
+        'True': 'true'
+        'False': 'false'
 
 
 file_format: 1
