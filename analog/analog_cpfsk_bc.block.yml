@@ -31,7 +31,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/cpfsk_bc.h>'
-    make: analog::cpfsk_bc::make(${k}, ${amplitude}, ${samples_per_symbol})
+    make: analog::cpfsk_bc::make(${k}, ${amplitude}, ${samples_per_symbol});
     callbacks:
     - set_amplitude(${amplitude})
     link: gnuradio-analog

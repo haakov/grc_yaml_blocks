@@ -31,7 +31,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/pll_refout_cc.h>'
-    make: analog::pll_refout_cc::make(${w}, ${max_freq}, ${min_freq})
+    make: analog::pll_refout_cc::make(${w}, ${max_freq}, ${min_freq});
     callbacks:
     - set_loop_bandwidth(${w})
     - set_max_freq(${max_freq})

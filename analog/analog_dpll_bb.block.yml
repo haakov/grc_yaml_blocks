@@ -26,7 +26,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/dpll_bb.h>'
-    make: analog::dpll_bb::make(${period}, ${gain})
+    make: analog::dpll_bb::make(${period}, ${gain});
     callbacks:
     - set_gain(${gain})
     link: gnuradio-analog

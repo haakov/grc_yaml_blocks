@@ -38,7 +38,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/noise_source_${type.fcn}.h>'
-    make: analog::noise_source_${type.fcn}::make(${noise_type}, ${amp}, ${seed})
+    make: analog::noise_source_${type.fcn}::make(${noise_type}, ${amp}, ${seed});
     callbacks:
     - set_type(${noise_type})
     - set_amplitude(${amp})

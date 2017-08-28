@@ -23,7 +23,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/frequency_modulator_fc.h>'
-    make: analog::frequency_modulator_fc::make(${sensitivity})
+    make: analog::frequency_modulator_fc::make(${sensitivity});
     callbacks:
     - set_sensitivity(${sensitivity})
     link: gnuradio-analog

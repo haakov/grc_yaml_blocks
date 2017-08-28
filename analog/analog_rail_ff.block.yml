@@ -27,7 +27,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/rail_ff.h>'
-    make: analog::rail_ff::make(${lo}, ${hi})
+    make: analog::rail_ff::make(${lo}, ${hi});
     callbacks:
     - set_lo(${lo})
     - set_hi(${hi})

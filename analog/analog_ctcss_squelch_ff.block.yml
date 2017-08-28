@@ -45,7 +45,7 @@ templates:
 
 cpp_templates:
     includes: '#include <gnuradio/analog/ctcss_squelch_ff.h>'
-    make: analog::ctcss_squelch_ff::make(${rate}, ${freq}, ${level}, ${len}, ${ramp}, ${gate})
+    make: analog::ctcss_squelch_ff::make(${rate}, ${freq}, ${level}, ${len}, ${ramp}, ${gate});
     callbacks:
     - set_level(${level})
     - set_frequency(${freq})
