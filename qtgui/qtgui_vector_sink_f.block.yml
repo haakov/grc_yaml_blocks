@@ -305,7 +305,7 @@ templates:
     - set_ref_level(${ref_level})
     - set_x_axis_units(${x_units})
     - set_y_axis_units(${y_units})
-    make:
+    make: |-
         qtgui.vector_sink_f(
             ${vlen},
             ${x_start},

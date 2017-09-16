@@ -369,14 +369,14 @@ templates:
     - set_bins(${bins})
     - set_bins(${bins})
     - set_x_axis(${xmin}, ${xmax})
-    make:
+    make: |-
         qtgui.histogram_sink_f(
-	        $size,
-	        $bins,
+            $size,
+            $bins,
             $xmin,
             $xmax,
-	        $name,
-	        ${ 0 if ${type.t} == 'message' else ${nconnections}
+            $name,
+            ${ 0 if ${type.t} == 'message' else ${nconnections}}
         )
 
         self.${id}.set_update_time(${update_time})

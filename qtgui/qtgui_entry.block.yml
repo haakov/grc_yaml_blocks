@@ -36,13 +36,13 @@ templates:
     - self.set_${id}(${value})
     - Qt.QMetaObject.invokeMethod(self._${id}_line_edit, "setText", Qt.Q_ARG("QString",
         ${type.str}(${id})))
-    make:
+    make: |-
         ${win} = Qt.QToolBar(self)
         ${win}.addWidget(Qt.QLabel(${label}+": "))
         self._${id}_line_edit = Qt.QLineEdit(str(self.${id}))
         self._${id}_tool_bar.addWidget(self._${id}_line_edit)
         self._${id}_line_edit.returnPressed.connect(
-	        lambda: self.set_${id}(${type.conv}(str(self._${id}_line_edit.text().toAscii()))))
+            lambda: self.set_${id}(${type.conv}(str(self._${id}_line_edit.text().toAscii()))))
 
 
 

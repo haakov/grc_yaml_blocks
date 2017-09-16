@@ -493,12 +493,12 @@ templates:
     - set_samp_rate(${srate})
     - self.${id}.set_trigger_mode(${tr_mode}, ${tr_slope}, ${tr_level}, ${tr_delay},
         ${tr_chan}, ${tr_tag})
-    make:
+    make: |-
         qtgui.${type.fcn}(
-	        ${size}, #size
-	        ${srate}, #samp_rate
-	        ${name}, #name
-        	${0 if ${type.t} == 'message' else ${nconnections}} #number of inputs
+            ${size}, #size
+            ${srate}, #samp_rate
+            ${name}, #name
+            ${0 if ${type.t} == 'message' else ${nconnections}} #number of inputs
         )
         self.${id}.set_update_time(${update_time})
         self.${id}.set_y_axis(${ymin}, ${ymax})
@@ -530,7 +530,6 @@ templates:
 
 
         self._${id}_win = sip.wrapinstance(self.${id}.pyqwidget(), Qt.QWidget)
-$
 
 
 documentation: |-

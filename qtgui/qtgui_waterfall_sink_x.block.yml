@@ -256,13 +256,13 @@ templates:
     - set_title(${which}, ${title})
     - set_color(${which}, ${color})
     - set_intensity_range(${int_min}, ${int_max})
-    make:
+    make: |-
         qtgui.${type.fcn}(
-	        ${fftsize}, #size
-        	${wintype}, #wintype
-	        ${fc}, #fc
-	        ${bw}, #bw
-	        ${name}, #name
+            ${fftsize}, #size
+            ${wintype}, #wintype
+            ${fc}, #fc
+            ${bw}, #bw
+            ${name}, #name
             ${0 if ${type.t} == 'message' else ${nconnections}} #number of inputs
         )
         self.${id}.set_update_time(${update_time})

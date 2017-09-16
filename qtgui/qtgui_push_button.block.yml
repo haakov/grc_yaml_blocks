@@ -39,7 +39,7 @@ templates:
     var_make: self.${id} = ${id} = ${value}
     callbacks:
     - self.set_${id}(${value})
-    make:
+    make: |-
         ${win} = Qt.QPushButton(${label})
         self._${id}_choices = {'Pressed': ${pressed}, 'Released': ${released}}
         ${win}.pressed.connect(lambda: self.set_${id}(self._${id}_choices['Pressed']))

@@ -323,7 +323,7 @@ templates:
         from gnuradio import qtgui
         import sip
         import numpy
-    make:
+    make: |-
         qtgui.ber_sink_b(
             ${esno}, #range of esnos
             ${num_curves}, #number of curves

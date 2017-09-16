@@ -40,7 +40,7 @@ templates:
     callbacks:
     - self.set_${id}(${value})
     - self._${id}_callback(${id})
-    make:
+    make: |-
         ${win} = Qt.QCheckBox(${label})
         self._${id}_choices = {True: ${true}, False: ${false}}
         self._${id}_choices_inv = dict((v,k) for k,v in self._${id}_choices.iteritems())

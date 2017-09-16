@@ -241,7 +241,7 @@ templates:
         import sip
     callbacks:
     - set_update_time(${update_time})
-    make:
+    make: |-
         qtgui.number_sink(
             ${type.size},
             ${avg},
