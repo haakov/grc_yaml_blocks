@@ -25,7 +25,7 @@ parameters:
 -   id: nrows
     label: Num. Rows
     dtype: int
-    hide: ${ ('all' if type.t == 'message' else 'none') }
+    hide: ${ ('all' if type.startswith('msg') else 'none') }
 -   id: ncols
     label: Num. Cols
     dtype: int
@@ -60,7 +60,7 @@ parameters:
     label: Number of Inputs
     dtype: int
     default: '1'
-    hide: ${ ('all' if type.t == 'message' else 'part') }
+    hide: ${ ('all' if type.startswith('msg') else 'part') }
 -   id: update_time
     label: Update Period
     dtype: real
@@ -208,7 +208,7 @@ parameters:
 inputs:
 -   domain: stream
     dtype: ${ type.t }
-    multiplicity: ${ (0 if type.t == 'message' else nconnections) }
+    multiplicity: ${ (0 if type.startswith('msg') else nconnections) }
     optional: true
 
 templates:
@@ -232,7 +232,7 @@ templates:
             ${mult},
             ${offset},
             ${name},
-            ${0 if ${type.t} == 'message' else ${nconnections}}
+            ${0 if type.startswith('msg') else nconnections}
         )
 
         self.${id}.set_update_time(${update_time})
@@ -247,7 +247,7 @@ templates:
         alphas = [${alpha1}, ${alpha2}, ${alpha3}, ${alpha4}, ${alpha5},
             ${alpha6}, ${alpha7}, ${alpha8}, ${alpha9}, ${alpha10}]
 
-        for i in range(${ 1 if ${type.t} == 'message' else ${nconnections}):
+        for i in range(${ 1 if type.startswith('msg') else nconnections):
             if len(labels[i]) == 0:
                 self.${id}.set_line_label(i, "Data {0}".format(i))
             else:

@@ -22,7 +22,7 @@ parameters:
     label: FFT Size
     dtype: int
     default: '1024'
-    hide: ${ ('all' if (type == 'msg_complex' or type == 'msg_float') else 'none') }
+    hide: ${ ('all' if type.startswith('msg') else 'none') }
 -   id: freqhalf
     label: Spectrum Width
     dtype: enum
@@ -92,7 +92,7 @@ parameters:
     label: Number of Inputs
     dtype: int
     default: '1'
-    hide: ${ ('all' if (type == 'msg_complex' or type == 'msg_float') else 'part') }
+    hide: ${ ('all' if type.startswith('msg') else 'part') }
 -   id: update_time
     label: Update Period
     dtype: real
@@ -369,7 +369,7 @@ parameters:
 inputs:
 -   domain: stream
     dtype: ${ type.t }
-    multiplicity: ${ (0 if (type == 'msg_complex' or type == 'msg_float') else nconnections) }
+    multiplicity: ${ (0 if type.startswith('msg') else nconnections) }
     optional: true
 -   domain: message
     id: freq
@@ -400,7 +400,7 @@ templates:
             ${fc}, #fc
             ${bw}, #bw
             ${name}, #name
-            ${ 0 if (type == 'msg_complex' or type == 'msg_float') else nconnections }
+            ${ 0 if type.startswith('msg') else nconnections }
         )
         self.${id}.set_update_time(${update_time})
         self.${id}.set_y_axis(${ymin}, ${ymax})
@@ -426,7 +426,7 @@ templates:
             ${color6}, ${color7}, ${color8}, ${color9}, ${color10}]
         alphas = [${alpha1}, ${alpha2}, ${alpha3}, ${alpha4}, ${alpha5},
             ${alpha6}, ${alpha7}, ${alpha8}, ${alpha9}, ${alpha10}]
-        for i in range(${ 1 if (type == 'msg_complex' or type == 'msg_float') else nconnections }):
+        for i in range(${ 1 if type.startswith('msg') else nconnections }):
             if len(labels[i]) == 0:
                 self.${id}.set_line_label(i, "Data {0}".format(i))
             else:

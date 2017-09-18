@@ -47,7 +47,7 @@ templates:
         if ${formatter}:
             self._${id}_formatter = $formatter
         else:
-            self._${id}_formatter = lambda x: $(type.str)(x)
+            self._${id}_formatter = lambda x: ${type.str}(x)
 
         ${win}.addWidget(Qt.QLabel($label+": "))
         self._${id}_label = Qt.QLabel(str(self._${id}_formatter(self.$id)))

@@ -32,7 +32,7 @@ parameters:
     label: Number of Points
     dtype: int
     default: '1024'
-    hide: ${ ('all' if type.t == 'message' else 'none') }
+    hide: ${ ('all' if type.startswith('msg') else 'none') }
 -   id: srate
     label: Sample Rate
     dtype: float
@@ -64,7 +64,7 @@ parameters:
     label: Number of Inputs
     dtype: int
     default: '1'
-    hide: ${ ('all' if type.t == 'message' else 'part') }
+    hide: ${ ('all' if type.startswith('msg') else 'part') }
 -   id: update_time
     label: Update Period
     dtype: float
@@ -76,7 +76,7 @@ parameters:
     default: 'True'
     options: ['True', 'False']
     option_labels: ['Yes', 'No']
-    hide: ${ ('all' if type.t == 'message' else 'part') }
+    hide: ${ ('all' if type.startswith('msg') else 'part') }
 -   id: gui_hint
     label: GUI Hint
     dtype: gui_hint
@@ -475,7 +475,7 @@ parameters:
 inputs:
 -   domain: stream
     dtype: ${ type.t }
-    multiplicity: ${ (0 if type.t == 'message' else nconnections) }
+    multiplicity: ${ (0 if type.startswith('msg') else nconnections) }
     optional: true
 
 templates:
@@ -498,7 +498,7 @@ templates:
             ${size}, #size
             ${srate}, #samp_rate
             ${name}, #name
-            ${0 if ${type.t} == 'message' else ${nconnections}} #number of inputs
+            ${0 if type.startswith('msg') else nconnections} #number of inputs
         )
         self.${id}.set_update_time(${update_time})
         self.${id}.set_y_axis(${ymin}, ${ymax})
@@ -525,8 +525,8 @@ templates:
             ${alpha6}, ${alpha7}, ${alpha8}, ${alpha9}, ${alpha10}]
         styles = [${style1}, ${style2}, ${style3}, ${style4}, ${style5},
             ${style6}, ${style7}, ${style8}, ${style9}, ${style10}]
-        markers = [$marker1, $marker2, $marker3, $marker4, $marker5,
-            $marker6, $marker7, $marker8, $marker9, $marker10]
+        markers = [${marker1}, ${marker2}, ${marker3}, ${marker4}, ${marker5},
+            ${marker6}, ${marker7}, ${marker8}, ${marker9}, ${marker10}]
 
 
         self._${id}_win = sip.wrapinstance(self.${id}.pyqwidget(), Qt.QWidget)
