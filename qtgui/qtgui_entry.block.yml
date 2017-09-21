@@ -1,6 +1,6 @@
 id: variable_qtgui_entry
 label: QT GUI Entry
-flags: has_python
+flags: has_python, has_cpp
 
 parameters:
 -   id: label
@@ -44,7 +44,33 @@ templates:
         self._${id}_line_edit.returnPressed.connect(
             lambda: self.set_${id}(${type.conv}(str(self._${id}_line_edit.text().toAscii()))))
 
-
+cpp_templates:
+    includes: |-
+        #include <QToolBar>
+        #include <QLineEdit>
+        #include <QLabel>
+        #include <QMetaObject>
+        #include <QString>
+    var_make: ${id} = ${value};
+    link: |-
+        Qt5::Widgets
+        gnuradio-qtgui
+    callbacks:
+    - this->set_${id}(${value})
+    - QMetaObject::invokeMethod(this->_${id}_line_edit, "setText", Q_ARG(QString,
+        QString::number(${id})))
+    additional_make: |-
+        this->_${id}_tool_bar =  new QToolBar();
+        _${id}_label = new QLabel(QString::fromStdString(std::string("${label.strip("'")}")+ std::string(": ")));
+        this->_${id}_tool_bar->addWidget(_${id}_label);
+        this->_${id}_line_edit = new QLineEdit(QString::number(this->${id}));
+        this->_${id}_tool_bar->addWidget(this->_${id}_line_edit);
+        QObject::connect(this->_${id}_line_edit, &QLineEdit::returnPressed, this, [this] () {this->set_${id}(this->_${id}_line_edit->text().toInt());});
+        this->top_layout->addWidget(this->_${id}_tool_bar);
+    vars: |-
+        QToolBar *_${id}_tool_bar;
+        QLineEdit *_${id}_line_edit;
+        QLabel *_${id}_label;        
 
 documentation: |-
     This block creates a variable with a text entry box. Leave the label blank to use the variable id as the label.
