@@ -31,6 +31,24 @@ parameters:
     default: qt_gui
     options: [qt_gui, no_gui, hb, hb_qt_gui]
     option_labels: [QT GUI, No GUI, Hier Block, Hier Block (QT GUI)]
+-   id: gen_linking
+    label: Linking
+    dtype: enum
+    default: dynamic
+    options: [dynamic, static]
+    option_labels: [ Dynamic, Static ]
+    hide: ${ ('part' if output_language == 'cpp' else 'all') }
+-   id: gen_cmake
+    label: Generate CMakeLists.txt
+    dtype: enum
+    default: 'On'
+    options: ['On', 'Off']
+    hide: ${ ('part' if output_language == 'cpp' else 'all') }
+-   id: gen_cmake_opt
+    label: CMake options
+    dtype: string
+    default: ''
+    hide: ${ ('part' if output_language == 'cpp' else 'all') }
 -   id: category
     label: Category
     dtype: string
