@@ -44,7 +44,7 @@ parameters:
     default: 'On'
     options: ['On', 'Off']
     hide: ${ ('part' if output_language == 'cpp' else 'all') }
--   id: gen_cmake_opt
+-   id: cmake_opt
     label: CMake options
     dtype: string
     default: ''

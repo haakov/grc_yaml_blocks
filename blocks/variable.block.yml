@@ -15,7 +15,7 @@ templates:
     - self.set_${id}(${value})
 
 cpp_templates:
-    var_make: this->${id} = ${value};
+    var_make: ${id} = ${value};
     callbacks:
     - this->set_${id}(${value})
 
